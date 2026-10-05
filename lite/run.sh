@@ -67,6 +67,8 @@ MQTT_HOST=$(jq -r '.mqtt_host // empty' /data/options.json)
 MQTT_PORT=$(jq -r '.mqtt_port // "1883"' /data/options.json)
 MQTT_USER=$(jq -r '.mqtt_user // empty' /data/options.json)
 MQTT_PASS=$(jq -r '.mqtt_pass // empty' /data/options.json)
+EXTRA_ARGS=$(jq -r '.extra_args // empty' /data/options.json)
+export EXTRA_ARGS
 
 mkdir -p /homeassistant
 

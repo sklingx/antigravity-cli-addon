@@ -11,9 +11,12 @@ fi
 # Clean up old socket
 rm -f /tmp/agy.socket
 
+# Read optional extra startup arguments
+EXTRA_ARGS=$(jq -r '.extra_args // empty' /data/options.json 2>/dev/null || true)
+
 # Start dtach with script in the background
 # script -f flushes output, -q is quiet, -a appends to the log
-dtach -n /tmp/agy.socket script -q -f -a /data/session.log -c "/usr/local/bin/agy" &
+dtach -n /tmp/agy.socket script -q -f -a /data/session.log -c "/usr/local/bin/agy ${EXTRA_ARGS:+$EXTRA_ARGS}" &
 
 # Start ttyd
 exec ttyd -p 8098 -t disableLeaveAlert=true -t disableResizeOverlay=true /opt/antigravity/attach.sh

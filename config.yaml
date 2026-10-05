@@ -1,6 +1,6 @@
-name: "Antigravity CLI"
+name: "Antigravity CLI (Custom)"
 description: "AI Agent with total control over domotics via Home Assistant Supervisor API"
-version: "1.12.0"
+version: "1.12.1-custom1"
 slug: "antigravity_cli"
 panel_icon: "mdi:triangle"
 panel_title: "Antigravity"
@@ -29,10 +29,12 @@ options:
   mqtt_port: "1883"
   mqtt_user: "addons"
   mqtt_pass: ""
+  extra_args: "--remote-control --remote-control-name home-assistant-prod"
 schema:
   ha_token: "str?"
   mqtt_host: "str?"
   mqtt_port: "str?"
   mqtt_user: "str?"
   mqtt_pass: "password?"
+  extra_args: "str?"
 

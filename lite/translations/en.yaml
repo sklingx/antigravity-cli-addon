@@ -2,3 +2,6 @@ configuration:
   ha_token:
     name: "Home Assistant Long-Lived Access Token"
     description: "Optional token for HA Core API access."
+  extra_args:
+    name: "Extra CLI Startup Arguments"
+    description: "Optional extra arguments passed to agy on startup (e.g. --remote-control)."
