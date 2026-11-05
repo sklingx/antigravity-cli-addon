@@ -93,7 +93,8 @@ fi
 export MCP_CONFIG_PATH=/homeassistant/mcp.json
 
 # Using disableResizeOverlay=true -t scrollback=10000 removes the annoying 100x40 banner
-ttyd -a -b /ttyd -t copyOnSelect=true -t enableZmodem=true -t disableLeaveAlert=true -t disableResizeOverlay=true -t scrollback=10000 -p 62898 /opt/antigravity/attach.sh &
+# -d 3 enables LLL_ERR (1) + LLL_WARN (2) only, suppressing routine LLL_NOTICE connection chatter on stderr
+ttyd -d 3 -a -b /ttyd -t copyOnSelect=true -t enableZmodem=true -t disableLeaveAlert=true -t disableResizeOverlay=true -t scrollback=10000 -p 62898 /opt/antigravity/attach.sh &
 
 echo "Starting NGINX reverse proxy on port 62899..."
 exec nginx -c /etc/nginx/nginx.conf -g "daemon off;"
